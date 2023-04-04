@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My ApplicationXl</string>
+    <string-array name="Unit_array">
+        <item>cm</item>
+        <item>inch</item>
+        <item>foot</item>
+        <item>yard</item>
+        <item>mile</item>
+        <item>km</item>
+        <item>kg</item>
+        <item>pound</item>
+        <item>ounce</item>
+        <item>ton</item>
+        <item>Celsius</item>
+        <item>Fahrenheit</item>
+        <item>Kelvin</item>
+    </string-array>
+    <string name="myTextBoxString">You had chosen</string>
+</resources>
