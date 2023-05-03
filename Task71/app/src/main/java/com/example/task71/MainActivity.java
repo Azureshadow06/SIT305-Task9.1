@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         Button signUpButton = findViewById(R.id.signUpButton);
         Button listButton = findViewById(R.id.listButton);
 
-        db = new DatabaseHelper(this);
+        db = new DatabaseHelper(this);//Active SQLite database
 
 
         signUpButton.setOnClickListener(new View.OnClickListener() {//Press this button to open Post New Advert Window
