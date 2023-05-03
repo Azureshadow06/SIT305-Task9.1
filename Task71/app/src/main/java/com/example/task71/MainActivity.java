@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        listButton.setOnClickListener(new View.OnClickListener() {
+        listButton.setOnClickListener(new View.OnClickListener() {//Press this button to open Lost&Found list window
             @Override
             public void onClick(View view) {
                 Intent listIntent = new Intent(MainActivity.this, ListActivity.class);
