@@ -24,9 +24,7 @@ public class MainActivity extends AppCompatActivity {
         db = new DatabaseHelper(this);
 
 
-
-
-        signUpButton.setOnClickListener(new View.OnClickListener() {
+        signUpButton.setOnClickListener(new View.OnClickListener() {//Press this button to open Post New Advert Window
             @Override
             public void onClick(View view) {
                 Intent signupIntent = new Intent(MainActivity.this, SignupActivity.class);
