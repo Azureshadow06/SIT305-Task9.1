@@ -15,7 +15,7 @@ import com.example.task71.model.User;
 public class SignupActivity extends AppCompatActivity {
     DatabaseHelper db;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {//This activity create a view of SignupActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         EditText sUsernameEditText = findViewById(R.id.sUsernameEditText);
@@ -28,7 +28,7 @@ public class SignupActivity extends AppCompatActivity {
         Button saveButton = findViewById(R.id.saveButton);
         db = new DatabaseHelper(this);
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
+        saveButton.setOnClickListener(new View.OnClickListener() {//Press this button to upload the info of lost&found item to database
             @Override
             public void onClick(View view) {
                 String username = sUsernameEditText.getText().toString();
@@ -47,9 +47,9 @@ public class SignupActivity extends AppCompatActivity {
                 }
 
 
-                if(password.equals(confirmPassword))
+                if(password.equals(confirmPassword)) //Let user Confirm their phone number by inserting one more time
                 {
-                    long result = db.insertUser(new User(username, password, location, describe, date, type));
+                    long result = db.insertUser(new User(username, password, location, describe, date, type));//Upload item to database by using insertUser method
                     if (result > 0)
                     {
                         Toast.makeText(SignupActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();

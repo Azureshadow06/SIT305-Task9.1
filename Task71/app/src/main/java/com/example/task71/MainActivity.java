@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         Button signUpButton = findViewById(R.id.signUpButton);
         Button listButton = findViewById(R.id.listButton);
 
-        db = new DatabaseHelper(this);
+        db = new DatabaseHelper(this);//Active SQLite database
 
 
         signUpButton.setOnClickListener(new View.OnClickListener() {//Press this button to open Post New Advert Window
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        listButton.setOnClickListener(new View.OnClickListener() {
+        listButton.setOnClickListener(new View.OnClickListener() {//Press this button to open Lost&Found list Window
             @Override
             public void onClick(View view) {
                 Intent listIntent = new Intent(MainActivity.this, ListActivity.class);

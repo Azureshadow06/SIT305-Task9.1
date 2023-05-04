@@ -19,20 +19,19 @@ public class ListActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) { //This function create a view of Listing Lost & Found Items
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-        staffList = new ArrayList<>();
+        staffList = new ArrayList<>(); //Declare new ArrayList
         db = new DatabaseHelper(ListActivity.this);
 
-        staffList = db.readCourses();
+        staffList = db.readItem(); //Read database column and row into new Arraylist
 
+        //Display the arraylist in Recycler viewer
         recyclerViewAdapter = new RecyclerViewAdapter(staffList, ListActivity.this);
         recyclerView = findViewById(R.id.recyclerView);
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ListActivity.this, RecyclerView.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
-
         recyclerView.setAdapter(recyclerViewAdapter);
 
     }

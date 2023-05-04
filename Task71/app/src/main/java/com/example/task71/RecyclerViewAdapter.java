@@ -19,11 +19,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>
-{
+{//Declare a RecyclerViewAdapter to use RecyclerViewAdapter class  and ViewHolder in following code.
     private ArrayList<User> userList;
     private Context context;
 
-    RecyclerViewAdapter(ArrayList<User> userList, Context context) {
+    RecyclerViewAdapter(ArrayList<User> userList, Context context) {//Class constructor
         this.userList = userList;
         this.context = context;
     }
@@ -45,9 +45,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public int getItemCount(){
         return userList.size();
-    }
+    }//Get array size of database
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder{//Declare ViewHolder class to access each item in the list
         TextView rowNameTextView;
 
         Button deleteButton;
@@ -59,7 +59,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             deleteButton = itemView.findViewById(R.id.deleteButton);
             deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View view) {
+                public void onClick(View view) {//Press button to share the position of user-selected item to ItemActivity
                     int position = getAdapterPosition();
                     Intent intent = new Intent(itemView.getContext(),ItemActivity.class);
                     intent.putExtra("position", position);

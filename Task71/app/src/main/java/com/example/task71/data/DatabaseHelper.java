@@ -17,13 +17,17 @@ import com.example.task71.util.Util;
 import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
+    //Declare DatabaseHelper class to access SQLite database function in activities
     public DatabaseHelper(@Nullable Context context) {
+        //Initialize the SQLiteOpenHelper superclass with the necessary parameters to create
+        //and manage the database.
         super(context, Util.DATABASE_NAME, null, DATABASE_VERSION);
     }
 
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        //Generate SQLite table based on the number of variables and their format.
         String query = "CREATE TABLE " + TABLE_NAME + " ("
                 + Util.USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + Util.USERNAME + " TEXT,"
@@ -38,8 +42,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
-
+        //Upgrade database by DROP TABLE automatically when Version number change
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
 
         onCreate(sqLiteDatabase);
@@ -47,7 +50,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public long insertUser(User user)
-    {
+    {   //Declare a long function to add new item into array.
+        //Also, return long value to check the result of execution
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(Util.USERNAME, user.getUsername());
@@ -61,16 +65,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
-    public void deleteUser(String username){
+    public void deleteUser(String name){ //Delete Item from database based on input name of item
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_NAME, Util.USERNAME + "=?", new String[]{String.valueOf(username)});
+        db.delete(TABLE_NAME, Util.USERNAME + "=?", new String[]{String.valueOf(name)});
         db.close();
     }
 
 
 
 
-    public void clearDatabase() {
+    public void clearDatabase() { //Clear all the item in database
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM " + TABLE_NAME);
         db.close();
@@ -78,41 +82,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-    // we have created a new method for reading all the courses.
-    public ArrayList<User> readCourses()
-    {
-        // on below line we are creating a
-        // database for reading our database.
+    public ArrayList<User> readItem()  { // Declare the arraylist function to read all data from database and output them
         SQLiteDatabase db = this.getReadableDatabase();
 
-        // on below line we are creating a cursor with query to
-        // read data from database.
-        Cursor cursorCourses
+        //Creating a cursor with query to read data from database.
+        Cursor cursorItems
                 = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
-
-        // on below line we are creating a new array list.
-        ArrayList<User> courseModalArrayList
+        ArrayList<User> itemModalArrayList
                 = new ArrayList<>();
 
         // moving our cursor to first position.
-        if (cursorCourses.moveToFirst()) {
+        if (cursorItems.moveToFirst()) {
             do {
-                // on below line we are adding the data from
-                // cursor to our array list.
-                courseModalArrayList.add(new User(
-                        cursorCourses.getString(1),
-                        cursorCourses.getString(2),
-                        cursorCourses.getString(6),
-                        cursorCourses.getString(3),
-                        cursorCourses.getString(4),
-                        cursorCourses.getString(5)));
-            } while (cursorCourses.moveToNext());
+                // on below line we are adding the data from cursor to our array list.
+                itemModalArrayList.add(new User(
+                        cursorItems.getString(1),
+                        cursorItems.getString(2),
+                        cursorItems.getString(6),
+                        cursorItems.getString(3),
+                        cursorItems.getString(4),
+                        cursorItems.getString(5)));
+            } while (cursorItems.moveToNext());
             // moving our cursor to next.
         }
-        // at last closing our cursor
-        // and returning our array list.
-        cursorCourses.close();
-        return courseModalArrayList;
+        // at last closing our cursor and returning our array list.
+        cursorItems.close();
+        return itemModalArrayList;
     }
 
 }

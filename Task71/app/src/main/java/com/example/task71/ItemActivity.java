@@ -28,7 +28,7 @@ public class ItemActivity extends AppCompatActivity {
     Button deleteButton;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {//This activity create a view of ItemActivity based on User's selection
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
 
@@ -40,12 +40,13 @@ public class ItemActivity extends AppCompatActivity {
         typeTextView = findViewById(R.id.iTypeTextView);
 
 
+
         deleteButton = findViewById(R.id.buttonDelete);
         Intent intent = getIntent();
         int position = intent.getIntExtra("position", -1);
         userList = new ArrayList<>();
         db = new DatabaseHelper(this);
-        userList = db.readCourses();
+        userList = db.readItem();
         User user = userList.get(position);
         itemNameTextView.setText("Item Name: " + user.getUsername() );
         passwordTextView.setText("Phone: " +user.getPassword());
@@ -57,7 +58,7 @@ public class ItemActivity extends AppCompatActivity {
 
 
 
-        deleteButton.setOnClickListener(new View.OnClickListener() {
+        deleteButton.setOnClickListener(new View.OnClickListener() {//Click this button to delete current item from database
             @Override
             public void onClick(View view) {
                 db.deleteUser(user.getUsername());

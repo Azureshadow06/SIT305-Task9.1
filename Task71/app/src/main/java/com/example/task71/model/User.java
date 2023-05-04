@@ -1,6 +1,6 @@
 package com.example.task71.model;
 
-public class User {
+public class User { //Declare a User Class to store user data
 
     private int user_id;
     private String username;
@@ -10,7 +10,7 @@ public class User {
     private String date;
     private String type;
 
-
+    // Constructor to initialize user data
     public User(String username, String password, String location, String describe, String date, String type) {
         this.username = username;
         this.password = password;
@@ -20,6 +20,7 @@ public class User {
         this.type = type;
     }
 
+    // Getter and Setter methods for the all the variables
     public String getType() {
         return type;
     }
