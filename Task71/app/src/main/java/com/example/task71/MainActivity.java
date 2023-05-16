@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button signUpButton = findViewById(R.id.signUpButton);
         Button listButton = findViewById(R.id.listButton);
+        Button mapButton = findViewById(R.id.buttonMaps);
 
         db = new DatabaseHelper(this);//Active SQLite database
 
@@ -37,6 +38,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent listIntent = new Intent(MainActivity.this, ListActivity.class);
                 startActivity(listIntent);
+            }
+        });
+
+        mapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mapIntent = new Intent(MainActivity.this, MapsActivity.class);
+                startActivity(mapIntent);
             }
         });
 

@@ -86,28 +86,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         //Creating a cursor with query to read data from database.
-        Cursor cursorItems
-                = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
-        ArrayList<User> itemModalArrayList
-                = new ArrayList<>();
+            Cursor cursorItems
+            = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+    ArrayList<User> itemModalArrayList
+            = new ArrayList<>();
 
-        // moving our cursor to first position.
+    // moving our cursor to first position.
         if (cursorItems.moveToFirst()) {
-            do {
-                // on below line we are adding the data from cursor to our array list.
-                itemModalArrayList.add(new User(
-                        cursorItems.getString(1),
-                        cursorItems.getString(2),
-                        cursorItems.getString(6),
-                        cursorItems.getString(3),
-                        cursorItems.getString(4),
-                        cursorItems.getString(5)));
-            } while (cursorItems.moveToNext());
-            // moving our cursor to next.
-        }
-        // at last closing our cursor and returning our array list.
+        do {
+            // on below line we are adding the data from cursor to our array list.
+            itemModalArrayList.add(new User(
+                    cursorItems.getString(1),
+                    cursorItems.getString(2),
+                    cursorItems.getString(6),
+                    cursorItems.getString(3),
+                    cursorItems.getString(4),
+                    cursorItems.getString(5)));
+        } while (cursorItems.moveToNext());
+        // moving our cursor to next.
+    }
+    // at last closing our cursor and returning our array list.
         cursorItems.close();
         return itemModalArrayList;
-    }
+}
 
 }

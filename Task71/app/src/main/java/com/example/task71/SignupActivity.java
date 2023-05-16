@@ -2,6 +2,7 @@ package com.example.task71;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,7 +27,24 @@ public class SignupActivity extends AppCompatActivity {
         EditText sDateEditText = findViewById(R.id.editTextDate);
         RadioGroup typeRadioGroup = findViewById(R.id.TypeRadioGroup);
         Button saveButton = findViewById(R.id.saveButton);
+        Button locateButton = findViewById(R.id.buttonLocate);
+
+        Intent intent = getIntent();
+        String formattedLocation = intent.getStringExtra("formattedLocation");
+        sLocationEditText.setText(formattedLocation);
+
         db = new DatabaseHelper(this);
+
+        locateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent locateIntent = new Intent(SignupActivity.this, LocationActivity.class);
+                startActivity(locateIntent);
+            }
+        });
+
+
+
 
         saveButton.setOnClickListener(new View.OnClickListener() {//Press this button to upload the info of lost&found item to database
             @Override
@@ -47,11 +65,14 @@ public class SignupActivity extends AppCompatActivity {
                 }
 
 
+
                 if(password.equals(confirmPassword)) //Let user Confirm their phone number by inserting one more time
                 {
                     long result = db.insertUser(new User(username, password, location, describe, date, type));//Upload item to database by using insertUser method
                     if (result > 0)
                     {
+                        Intent locateIntent = new Intent(SignupActivity.this, MainActivity.class);
+                        startActivity(locateIntent);
                         Toast.makeText(SignupActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
                     }
                     else
