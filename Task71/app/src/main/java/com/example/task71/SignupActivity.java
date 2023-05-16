@@ -29,6 +29,7 @@ public class SignupActivity extends AppCompatActivity {
         Button saveButton = findViewById(R.id.saveButton);
         Button locateButton = findViewById(R.id.buttonLocate);
 
+        //Following code used to get user's realtime location from location activity, Set location into EditText
         Intent intent = getIntent();
         String formattedLocation = intent.getStringExtra("formattedLocation");
         sLocationEditText.setText(formattedLocation);
