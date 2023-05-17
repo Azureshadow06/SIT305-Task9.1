@@ -27,7 +27,7 @@ public class SignupActivity extends AppCompatActivity {
         EditText sDateEditText = findViewById(R.id.editTextDate);
         RadioGroup typeRadioGroup = findViewById(R.id.TypeRadioGroup);
         Button saveButton = findViewById(R.id.saveButton);
-        Button locateButton = findViewById(R.id.buttonLocate);
+
 
         //Following code used to get user's realtime location from location activity, Set location into EditText
         Intent intent = getIntent();
@@ -36,7 +36,7 @@ public class SignupActivity extends AppCompatActivity {
 
         db = new DatabaseHelper(this);
 
-        locateButton.setOnClickListener(new View.OnClickListener() {
+        sLocationEditText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent locateIntent = new Intent(SignupActivity.this, LocationActivity.class);
